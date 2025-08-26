@@ -126,7 +126,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
-LOGIN_REDIRECT_URL = 'user_list'
+LOGIN_REDIRECT_URL = 'user-list'
 LOGOUT_REDIRECT_URL = 'login'
 
 AUTH_USER_MODEL = 'users.CustomUser'
