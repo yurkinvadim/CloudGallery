@@ -1,3 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.views.generic import ListView
 
-# Create your views here.
+from users.models import CustomUser
+
+
+class CustomUserListView(LoginRequiredMixin, ListView):
+    model = CustomUser
+    context_object_name = 'users'

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'crispy_forms',
     'crispy_bootstrap5',
+    'bootstrap5',
     'users',
     'photos',
 ]
@@ -125,7 +126,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
-LOGIN_REDIRECT_URL = 'signup'
+LOGIN_REDIRECT_URL = 'user_list'
 LOGOUT_REDIRECT_URL = 'login'
 
 AUTH_USER_MODEL = 'users.CustomUser'
