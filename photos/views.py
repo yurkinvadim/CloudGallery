@@ -1,10 +1,11 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView
 
 from photos.forms import PhotoUploadForm
 from photos.models import Photo
 
 
-class PhotoUploadView(CreateView):
+class PhotoUploadView(LoginRequiredMixin, CreateView):
     model = Photo
     form_class = PhotoUploadForm
 

@@ -19,7 +19,6 @@ class UserViewsTests(TestCase):
     def setUp(self):
         self.client = Client()
         self.client.login(username='testuser', password='testpass123')
-        self.client_without_access = Client()
 
     def test_user_signup(self):
         data = {
@@ -54,12 +53,21 @@ class UserViewsTests(TestCase):
         self.assertEqual(response.url, reverse('user-list'))
 
 
-    def test_user_list_view_page_loads(self):
+    def test_user_list_view_status_code(self):
         response = self.client.get(reverse('user-list'))
         self.assertEqual(response.status_code, 200)
 
 
-    def test_user_list_view_no_authenticated_user(self):
-        response = self.client_without_access.get(reverse('user-list'))
+    def test_user_list_view_no_access_status_code(self):
+        response = Client().get(reverse('user-list'))
+        self.assertEqual(response.status_code, 302)
+        self.assertIn(reverse('login'), response.url)
+
+    def test_user_detail_view_status_code(self):
+        response = self.client.get(reverse('user-detail', kwargs={'pk': CustomUser.objects.first().pk}))
+        self.assertEqual(response.status_code, 200)
+
+    def test_user_detail_view_no_access_status_code(self):
+        response = Client().get(reverse('user-detail', kwargs={'pk': CustomUser.objects.first().pk}))
         self.assertEqual(response.status_code, 302)
         self.assertIn(reverse('login'), response.url)
