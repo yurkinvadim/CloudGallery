@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load humanize %}
 
 {% block content %}
 
@@ -10,19 +10,12 @@
                 {% for user in users %}
                     <div class="col">
                     <div class="card shadow-sm">
-                        <svg aria-label="Placeholder: Thumbnail" class="bd-placeholder-img card-img-top" height="225"
-                             preserveAspectRatio="xMidYMid slice" role="img" width="100%"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c"></rect>
-                            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                        </svg>
+                         <img src="{{user.last_photo.image.url}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{user.username}}'s photos.</h5>
-                            <p class="card-text">Number of Photos: 34</p>
+                            <p class="card-text">Number of Photos: {{ user.photos.count }}</p>
                             <div class="d-flex justify-content-between align-items-center">
-
-                                <small class="text-body-secondary">Last update: 9 mins</small>
+                                <small class="text-body-secondary">Last upload: {{ user.last_photo.uploaded_at|naturaltime }}</small>
                                 <div class="btn-group">
                                     <a class="btn btn-sm btn-outline-secondary" href="{{ user.get_absolute_url }}" role="button">View</a>
                                 </div>

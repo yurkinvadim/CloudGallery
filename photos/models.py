@@ -12,3 +12,6 @@ class Photo(models.Model):
 
     def __str__(self):
         return self.title or f'Photo {self.id}'
+
+    class Meta:
+        ordering = ['-uploaded_at']
