@@ -6,7 +6,7 @@
     {% bootstrap_javascript %}
     <title>
         {% block title %}
-            Cloud Gallery
+        Cloud Gallery
         {% endblock %}
     </title>
 </head>
@@ -14,26 +14,21 @@
 <body>
 
 {% block header %}
-<header>
-    <div class="navbar navbar-dark bg-dark shadow-sm">
-        <div class="container">
-            <a href="#" class="navbar-brand d-flex align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
-                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2"
-                     viewBox="0 0 24 24">
-                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-                    <circle cx="12" cy="13" r="4"></circle>
-                </svg>
-                <strong>Cloud Gallery</strong>
-            </a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active" href="#">My Gallery</a>
-                </li>
+<header class="p-3 text-bg-dark navbar-dark bg-dark">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a class="navbar-brand" href="{% url 'user-list' %}">CloudGallery</a>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" class="nav-link px-2 text-white">My Gallery</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">Upload new photo</a></li>
             </ul>
-
+            <div class="text-end">
+                <form class="d-flex" method="POST" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-light" type="submit">Sign-out</button>
+                </form>
+            </div>
         </div>
-
     </div>
 </header>
 {% endblock %}
