@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="auto">
+<html lang="en" data-bs-theme="auto" style="overflow-y: scroll">
 <head>
     {% load bootstrap5 %}
     {% bootstrap_css %}
@@ -19,7 +19,7 @@
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a class="navbar-brand" href="{% url 'user-list' %}">CloudGallery</a>
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 text-white">My Gallery</a></li>
+                <li><a href="{% url 'user-detail' pk=request.user.pk %}" class="nav-link px-2 text-white">My Gallery</a></li>
                 <li><a href="{% url 'photos:upload' %}" class="nav-link px-2 text-white">Upload new photo</a></li>
             </ul>
             <div class="text-end">
