@@ -17,6 +17,7 @@ urlpatterns = [
     path('accounts/', include(auth_urls)),
     path('', CustomUserListView.as_view(), name='user-list'),
     path('user/<int:pk>/', CustomUserDetailView.as_view(), name='user-detail'),
+    path('photos/', include('photos.urls')),
 ] + debug_toolbar_urls()
 
 if settings.DEBUG:

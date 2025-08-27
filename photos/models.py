@@ -6,7 +6,7 @@ from cloud_gallery.settings import AUTH_USER_MODEL
 class Photo(models.Model):
     user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='photos')
     image = models.ImageField(upload_to='photos/')
-    title = models.CharField(max_length=100, blank=True)
+    title = models.CharField(max_length=100, blank=False, null=False)
     description = models.TextField(blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 

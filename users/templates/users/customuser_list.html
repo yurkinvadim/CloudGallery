@@ -9,8 +9,8 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 {% for user in users %}
                     <div class="col">
-                    <div class="card shadow-sm">
-                         <img src="{{user.last_photo.image.url}}" class="card-img-top" alt="...">
+                    <div class="card shadow-sm h-100">
+                        <img src="{{user.last_photo.image.url}}" class="card-img-top" alt="..." style="width: 100%; height: 15vw; object-fit: cover;">
                         <div class="card-body">
                             <h5 class="card-title">{{user.username}}'s photos.</h5>
                             <p class="card-text">Number of Photos: {{ user.photos.count }}</p>
