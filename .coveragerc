@@ -1,0 +1,9 @@
+[run]
+plugins = django_coverage_plugin
+
+omit =
+    venv/*
+    static/*
+    src/*/migrations/*
+    src/*/tests/test*.py
+    src/*/tests/*/test*.py
