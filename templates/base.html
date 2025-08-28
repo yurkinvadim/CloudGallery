@@ -15,7 +15,7 @@
     </title>
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 {% block header %}
 <header class="p-3 text-bg-dark navbar-dark bg-dark">
@@ -37,12 +37,14 @@
 </header>
 {% endblock %}
 
-{% block content %}
+<main class="flex-fill">
+    {% block content %}
 
-{% endblock %}
+    {% endblock %}
+</main>
 
 {% block footer %}
-<footer class="text-body-secondary py-5">
+<footer class="text-body-secondary py-5 mt-auto">
     <div class="container">
         <p class="float-end mb-1"><a href="#">Back to top</a></p>
         <p class="mb-1">Cloud Gallery is an educational project for learning AWS. </p>

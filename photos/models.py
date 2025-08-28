@@ -1,3 +1,5 @@
+import os
+
 from django.db import models
 from django.utils.timezone import now
 
@@ -21,3 +23,10 @@ class Photo(models.Model):
 
     class Meta:
         ordering = ['-uploaded_at']
+
+    def delete(self, *args, **kwargs):
+        # Delete from media folder
+        if self.image:
+            if os.path.isfile(self.image.path):
+                os.remove(self.image.path)
+        super().delete(*args, **kwargs)
