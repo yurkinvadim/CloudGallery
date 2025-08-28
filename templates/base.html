@@ -1,9 +1,13 @@
+{% load bootstrap5 %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto" style="overflow-y: scroll">
 <head>
-    {% load bootstrap5 %}
+
     {% bootstrap_css %}
     {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>
         {% block title %}
         Cloud Gallery
