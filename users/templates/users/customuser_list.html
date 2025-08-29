@@ -19,6 +19,7 @@
                                 <small class="text-body-secondary">Last upload: {{ user.last_photo.uploaded_at|naturaltime }}</small>
                                 <div class="btn-group">
                                     <a class="btn btn-sm btn-outline-secondary" href="{{ user.get_absolute_url }}" role="button">View</a>
+                                    <a class="btn btn-sm btn-outline-secondary" href="{{ user.get_download_photos_url }}" role="button">Download</a>
                                 </div>
                             </div>
                         </div>

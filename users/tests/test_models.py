@@ -1,5 +1,5 @@
-from django.test import TestCase
 from django.contrib.auth import get_user_model
+from django.test import TestCase
 
 User = get_user_model()
 
@@ -24,3 +24,12 @@ class UserModelTests(TestCase):
         self.assertEqual(admin_user.username, 'admin')
         self.assertTrue(admin_user.is_staff)
         self.assertTrue(admin_user.is_superuser)
+
+    def test_user_get_urls(self):
+        user = User.objects.create_user(
+            username='testuser',
+            email='test@example.com',
+            password='testpass123'
+        )
+        self.assertEqual(user.get_absolute_url(), f'/users/{user.id}/')
+        self.assertEqual(user.get_download_photos_url(), f'/users/{user.id}/download_photos/')
