@@ -19,6 +19,7 @@
                                 <small class="text-body-secondary">Uploaded at: {{ photo.uploaded_at|naturaltime }}</small>
                                 <div class="btn-group">
                                     <a class="btn btn-sm btn-outline-primary" target="_blank" href="{{ photo.image.url }}" role="button">Open</a>
+                                    <a class="btn btn-sm btn-outline-primary" href="{% url 'photos:update' pk=photo.pk %}" role="button">Update</a>
                                     <a class="btn btn-sm btn-outline-primary" target="_blank" href="{{ photo.image.url }}" download role="button">Download</a>
                                     {% if user == request.user %}
                                         <a class="btn btn-sm btn-outline-danger" href="{% url 'photos:delete' pk=photo.pk %}" role="button">Delete</a>
