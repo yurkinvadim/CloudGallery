@@ -64,10 +64,10 @@ class UserViewsTests(TestCase):
         self.assertIn(reverse('login'), response.url)
 
     def test_user_detail_view_status_code(self):
-        response = self.client.get(reverse('user-detail', kwargs={'pk': CustomUser.objects.first().pk}))
+        response = self.client.get(CustomUser.objects.first().get_absolute_url())
         self.assertEqual(response.status_code, 200)
 
     def test_user_detail_view_no_access_status_code(self):
-        response = Client().get(reverse('user-detail', kwargs={'pk': CustomUser.objects.first().pk}))
+        response = Client().get(CustomUser.objects.first().get_absolute_url())
         self.assertEqual(response.status_code, 302)
         self.assertIn(reverse('login'), response.url)

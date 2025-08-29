@@ -5,7 +5,7 @@ from django.urls import path, include
 
 from cloud_gallery import settings
 from cloud_gallery.views import SignUpView
-from users.views import CustomUserListView, CustomUserDetailView
+from users.views import CustomUserListView
 
 auth_urls = [
     path('', include('django.contrib.auth.urls')),
@@ -16,7 +16,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include(auth_urls)),
     path('', CustomUserListView.as_view(), name='user-list'),
-    path('user/<int:pk>/', CustomUserDetailView.as_view(), name='user-detail'),
+    path('users/', include('users.urls')),
     path('photos/', include('photos.urls')),
 ] + debug_toolbar_urls()
 
