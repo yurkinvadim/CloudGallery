@@ -5,30 +5,24 @@ from photos.forms import PhotoUploadForm
 from photos.models import Photo
 
 
-class PhotoUploadView(LoginRequiredMixin, CreateView):
+class PhotoMixin(LoginRequiredMixin):
     model = Photo
-    form_class = PhotoUploadForm
 
     def get_success_url(self):
         return self.request.user.get_absolute_url()
+
+
+class PhotoUploadView(PhotoMixin, CreateView):
+    form_class = PhotoUploadForm
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-
-class PhotoUpdateView(LoginRequiredMixin, UpdateView):
-    model = Photo
+class PhotoUpdateView(PhotoMixin, UpdateView):
     fields = ('title', 'description')
 
-    def get_success_url(self):
-        return self.request.user.get_absolute_url()
 
-class PhotoDeleteView(LoginRequiredMixin, DeleteView):
-    model = Photo
-
+class PhotoDeleteView(PhotoMixin, DeleteView):
     def get_queryset(self):
         return Photo.objects.filter(user=self.request.user)
-
-    def get_success_url(self):
-        return self.request.user.get_absolute_url()
