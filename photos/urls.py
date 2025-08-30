@@ -1,6 +1,6 @@
 from django.urls import path
 
-from photos.views import PhotoUploadView, PhotoDeleteView, PhotoUpdateView
+from photos.views import PhotoDeleteView, PhotoUpdateView, PhotoUploadView
 
 app_name = "photos"
 
